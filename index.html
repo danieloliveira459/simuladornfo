@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador FNO</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+  <div class="app-root">
+  
+    <div class="card">
+   <aside class="sidebar">
+  <div class="progress-container">
+
+    <div class="step active" id="step1">
+      <div class="circle"></div>
+      <span>Dados básicos</span>
+    </div>
+
+    <div class="line" id="line1"></div>
+
+    <div class="step" id="step2">
+      <div class="circle"></div>
+      <span>Seu projeto</span>
+    </div>
+
+    <div class="line" id="line2"></div>
+
+    <div class="step" id="step3">
+      <div class="circle"></div>
+      <span>Resultado</span>
+    </div>
+
+  </div>
+</aside>
+
+      <section class="content">
+    
+        <form id="basicForm" class="panel">
+          <h3 class="title">Simulador de FNO</h3>
+
+          <label class="label">Qual é o seu nome?</label>
+          <input id="nome" class="input" type="text" placeholder="Daniel" required>
+
+          <label class="label">Qual é o nome da sua empresa?</label>
+          <input id="empresa" class="input" type="text" placeholder="Daniel Tech" required>
+
+          <label class="label">Qual é o CNPJ da sua empresa?</label>
+          <input id="cnpj" class="input" type="text" placeholder="00-000.000.0001/09" required>
+
+          <div class="row">
+            <div class="flex-1">
+              <label class="label">E-mail de contato</label>
+              <input id="email" class="input" type="email" placeholder="daniel@exemplo.com" required>
+            </div>
+            <div class="flex-1">
+              <label class="label">Telefone</label>
+              <input id="telefone" class="input" type="text" placeholder="(00) 00000-0000" maxlength="15">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="flex-1">
+              <label class="label" for="estado">Estado</label>
+              <select id="estado" class="select" title="Estado">
+                <option value=""></option>
+                <option value="AM">AM</option>
+                <option value="AP">AP</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="TO">TO</option>
+              </select>
+            </div>
+            <div class="flex-1">
+              <label class="label">Município</label>
+              <select id="municipio" class="select" title="Município">
+                <option value=""></option>
+                <option value="Manaus">Manaus</option>
+                <option value="Rio Branco">Rio Branco</option>
+                <option value="Porto Velho">Porto Velho</option>
+                <option value="Boa Vista">Boa Vista</option>
+                <option value="Palmas">Palmas</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="toProject" class="btn btn-primary bi bi-arrow-right-short">Seguir</button>
+          </div>
+        </form>
+
+        <form id="projectForm" class="panel hidden">
+          <h3 class="title">Simulador de FNO</h3>
+
+          <label class="label" for="setor">Setor de atividade</label>
+          <select id="setor" class="select" aria-label="Setor de atividade">
+            <option value="">Selecione</option>
+            <option value="industria">Indústria</option>
+            <option value="servicos">Serviços</option>
+          </select>
+
+          <label class="label">Modalidade do crédito</label>
+          <select id="modalidade" class="select" title="Modalidade do crédito">
+            <option value="">Selecione</option>
+            <option value="Investimento-Amazônia Empresarial">Investimento - Amazônia Empresarial</option>
+            <option value="financiamento">Financiamento</option>
+            <option value="investimento">Investimento</option>
+          </select>
+
+          <label class="label">Receita Bruta Anual</label>
+          <input id="receitaBrutaAnual" class="input" type="text" placeholder="Receita Bruta Anual">
+
+          <div class="row">
+            <div class="flex-1">
+              <label class="label" for="estadoProjeto">Estado</label>
+              <select id="estadoProjeto" class="select">
+                <option value="">Selecione</option>
+                <option>Amazonas</option>
+                <option>Amapá</option>
+                <option>Rondônia</option>
+                <option>Roraima</option>
+                <option>Tocantins</option>
+                <option>Acre</option>
+              </select>
+            </div>
+
+            <div class="flex-1">
+              <label class="label">Município</label>
+              <select id="municipioProjeto" class="select" title="Município do projeto">
+                <option value="">Selecione</option>
+                <option>Amaturá</option>
+                <option>Calçoene</option>
+                <option>Boa Vista</option>
+                <option>Palmas</option>
+                <option>Rio Branco</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="flex-1">
+              <label class="label">Valor do Projeto</label>
+              <input id="valorProjeto" class="input" type="text" placeholder="valor do Projeto">
+            </div>
+            <div class="flex-1">
+              <label class="label">Valor Financiado</label>
+              <input id="valorFinanciado" class="input" type="text" placeholder="valor financiado">
+              <div class="limite-info">Limite financiável: 170.000.000,00</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="flex-1">
+              <label class="label">Prazo em meses</label>
+              <input id="prazo" class="input" type="text" placeholder="Prazo">
+            </div>
+
+            <div class="flex-1">
+              <label class="label">Carência em meses</label>
+              <input id="carencia" class="input" type="text" placeholder="Carência">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="flex-1">
+              <label class="label">Índice de Correção</label>
+              <select id="indiceCorrecao" class="select" title="Índice de Correção">
+                <option value=""></option>
+                <option value="IPCA">Pré Fixado</option>
+              </select>
+            </div>
+
+            <div class="flex-1">
+              <label class="label">Sistema de Amortização</label>
+              <select id="sistemaAmortizacao" class="select" title="Sistema de Amortização">
+                <option value=""></option>
+                <option value="SAC">SAC</option>
+                <option value="PRICE">PRICE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="checkbox-row">
+            <input id="descontoPontualidade" type="checkbox" title="Adicionar 15% desconto de pontualidade">
+            <label for="descontoPontualidade" class="small-label">Adicionar 15% desconto de pontualidade</label>
+          </div>
+
+          <div class="actions">
+            <button type="button" id="toResult" class="btn btn-primary bi bi-arrow-right-short">Seguir</button>
+          </div>
+        </form>
+
+        <div id="resultScreen" class="panel hidden">
+          <h3 class="title">Resultado</h3>
+
+          <div class="badges">
+            <div class="badge">Pequeno Porte</div>
+            <div class="badge">Município Prioritário</div>
+            <div class="badge outline">Taxa de juros: 7,96% a.a. + IPCA(PÓS-FIXADA)</div>
+          </div>
+
+          <div class="results-grid">
+            <div class="result-card">
+              <p class="result-value">R$ <span id="resFinanciado">0</span></p>
+              <p class="small-label"><strong>Valor financiado</strong></p>
+            </div>
+
+            <div class="result-card">
+              <p class="result-value">R$ <span id="resTotal">0</span></p>
+              <p class="small-label"><strong>Total pago</strong></p>
+            </div>
+
+            <div class="result-card">
+              <p class="result-value">R$ <span id="resPrimeiraParcela">0</span></p>
+              <p class="small-label"><strong>Primeira parcela após carência</strong></p>
+            </div>
+
+            <div class="result-card">
+              <p class="result-value">R$ <span id="resJuros">0</span></p>
+              <p class="small-label"><strong>Total de juros</strong></p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="baixarPDF" type="button" class="btn btn-primary">
+            <i class="bi bi-download"></i> Baixar Simulação Completa</button>
+
+    
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
