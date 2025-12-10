@@ -9,7 +9,7 @@ aonde foi feita a estrutura do projeto, estrutura dividida em sidebar "barra lat
 * Resultado (valor financiado, total pago, primeira parcela, juros)
 Botões de navegação entre etapas e botão final para gerar PDF.
 * CSS
-  para estilização, sidebar mostra mostra o progresso no qual quando o usuário avança as paginas ele muda de cor conforme o avanço
+  para estilização, sidebar  mostra o progresso no qual quando o usuário avança as paginas ele muda de cor conforme o avanço
   inputs e selects estilizados
 * JAVASCRIPT
   aonde foram feitas os scripts, da aplicação

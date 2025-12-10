@@ -86,7 +86,7 @@ body{
 .line {
   inline-size: 3px;
   block-size: 42px;
-  background: #d1d5db;
+  background: #fff;
   margin-inline-start: 7px;
   transition: background 0.3s ease;
 }
